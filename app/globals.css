@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian:#090A0B;--color-graphite:#131517;--color-slate:#22262A;--color-ivory:#F4F0E8;--color-mist:#AAA69D;--color-aurum:#C9A96E;--color-champagne:#E6D3A7;--color-success:#66A57A;--color-warning:#D5A352;--color-danger:#C96767;
+  --font-display:var(--font-cormorant),Georgia,serif;--font-sans:var(--font-manrope),Arial,sans-serif;
+  --radius-card:1.25rem;--animate-shimmer:shimmer 1.8s ease-in-out infinite;
+  @keyframes shimmer{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+}
+
+:root{color-scheme:dark;--header-h:76px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#090A0B}
+body{margin:0;background:#090A0B;color:#F4F0E8;font-family:var(--font-manrope),Arial,sans-serif;overflow-x:hidden}
+::selection{background:#C9A96E;color:#090A0B}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid #E6D3A7;outline-offset:3px}
+.container-shell{width:min(100% - 32px,1280px);margin-inline:auto}
+.eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#C9A96E;font-weight:700}
+.display-title{font-family:var(--font-cormorant),Georgia,serif;font-weight:500;line-height:.94;letter-spacing:-.035em;text-wrap:balance}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,#C9A96E,transparent)}
+.glass{background:linear-gradient(135deg,rgba(34,38,42,.88),rgba(19,21,23,.72));border:1px solid rgba(230,211,167,.14);backdrop-filter:blur(18px)}
+.text-balance{text-wrap:balance}.text-pretty{text-wrap:pretty}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+@media(max-width:639px){:root{--header-h:68px}.container-shell{width:min(100% - 24px,1280px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+@keyframes subtleZoom{from{transform:scale(1)}to{transform:scale(1.05)}}

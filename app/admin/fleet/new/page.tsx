@@ -1,0 +1,2 @@
+import {redirect} from 'next/navigation';import {AdminShell} from '@/components/admin/admin-shell';import {VehicleForm} from '@/components/admin/vehicle-form';import {getCurrentAdmin} from '@/server/security/session';
+export default async function NewVehiclePage(){const admin=await getCurrentAdmin();if(!admin)redirect('/admin/login');return <AdminShell email={admin.email} role={admin.role}><p className="eyebrow">Автопарк</p><h1 className="mt-3 mb-8 font-display text-4xl">Новый автомобиль</h1><VehicleForm/></AdminShell>}

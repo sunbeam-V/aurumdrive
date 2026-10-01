@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function NotFound(){return <main className="grid min-h-screen place-items-center bg-obsidian px-6 text-center text-ivory"><div><p className="eyebrow">404</p><h1 className="display-title mt-4 text-6xl">Страница не найдена</h1><p className="mt-5 text-mist">The requested page does not exist.</p><Link href="/ru" className="mt-8 inline-flex min-h-12 items-center rounded-full bg-aurum px-7 font-semibold text-obsidian">На главную</Link></div></main>}

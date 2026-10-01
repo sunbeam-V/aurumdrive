@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Aurum Drive</title>
+  <desc id="desc">Золотая монограмма A и D в форме дороги</desc>
+  <rect width="64" height="64" fill="#090A0B"/>
+  <path fill="#C9A96E" d="M12 48 28 14h8L22 48h-10Z"/>
+  <path fill="#E6D3A7" d="M33 14h7c9.94 0 18 7.61 18 17s-8.06 17-18 17H26l5-11h9c3.87 0 7-2.69 7-6s-3.13-6-7-6H28l5-11Z"/>
+  <path fill="#090A0B" d="M29 31h11v3H27.6z"/>
+</svg>

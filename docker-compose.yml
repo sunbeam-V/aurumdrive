@@ -1,0 +1,49 @@
+services:
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: aurum
+      MYSQL_USER: aurum
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - aurum-db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","127.0.0.1","-u","aurum","--password=${MYSQL_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  migrate:
+    build:
+      context: .
+      target: builder
+      network: host
+    environment:
+      DATABASE_URL: mysql://aurum:${MYSQL_PASSWORD}@db:3306/aurum
+    command: ["sh","-c","pnpm db:migrate && pnpm db:seed"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    build:
+      context: .
+      network: host
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: mysql://aurum:${MYSQL_PASSWORD}@db:3306/aurum
+      SESSION_SECRET: ${SESSION_SECRET}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
+      NEXT_PUBLIC_YANDEX_METRIKA_ID: ${NEXT_PUBLIC_YANDEX_METRIKA_ID}
+      NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  aurum-db:
